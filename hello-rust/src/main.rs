@@ -20,5 +20,7 @@ fn main() -> Result<()> {
         MessageBoxA(None, "Text", "Caption", MB_OK);
     }
 
+    let hWndParent = GetDesktopWindow::new();
+
     Ok(())
 }
