@@ -13,6 +13,7 @@
 use bindings::{
     Windows::Foundation::Uri,
     Windows::Web::Syndication::SyndicationClient,
+    Windows::Win32::UI::WindowsAndMessaging::GetDesktopWindow,
 };
 
 fn main() -> windows::Result<()> {
@@ -23,6 +24,6 @@ fn main() -> windows::Result<()> {
     for item in feed.Items()? {
         println!("{}", item.Title()?.Text()?);
     }
-
+    let hWndParent = GetDesktopWindow::new();
     Ok(())
 }
