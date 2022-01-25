@@ -18,9 +18,7 @@ fn main() -> Result<()> {
         CloseHandle(event).ok()?;
 
         MessageBoxA(None, "Text", "Caption", MB_OK);
+        let hWndParent = GetDesktopWindow();
     }
-
-    let hWndParent = GetDesktopWindow();
-
     Ok(())
 }
