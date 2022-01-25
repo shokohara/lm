@@ -1,0 +1,16 @@
+{
+  "name": "inconclusive-operation-bathe-0ewqi",
+  "productName": "inconclusive-operation-bathe-0ewqi",
+  "description": "My Electron application description",
+  "keywords": [],
+  "main": "./main.js",
+  "version": "1.0.0",
+  "author": "sho",
+  "scripts": {
+    "start": "electron ."
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "electron": "16.0.6"
+  }
+}
