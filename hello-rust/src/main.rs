@@ -53,7 +53,7 @@ pub fn create_d3d_device() -> windows::Result<ID3D11Device> {
         &mut device,
     );
     unsafe {
-        D3D11CreateDevice(None, D3D_DRIVER_TYPE_HARDWARE, None, D3D11_CREATE_DEVICE_BGRA_SUPPORT, std::ptr::null(), 0D3D11_SDK_VERSION as u32, &mut device, std::ptr::null_mut(), std::ptr::null_mut())
+        D3D11CreateDevice(None, D3D_DRIVER_TYPE_HARDWARE, None, D3D11_CREATE_DEVICE_BGRA_SUPPORT, std::ptr::null(), 0,D3D11_SDK_VERSION as u32, &mut device, std::ptr::null_mut(), std::ptr::null_mut())
     }
     // if let Err(error) = &result {
     //     if error.code() == DXGI_ERROR_UNSUPPORTED {
