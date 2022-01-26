@@ -7,9 +7,7 @@ use windows::{
     Win32::Graphics::Direct3D::{
         D3D_DRIVER_TYPE_HARDWARE, D3D_DRIVER_TYPE,
     },
-    Win32::Graphics::DirectX::DirectX::{
-        B8G8R8X8UIntNormalized
-    },
+    Graphics::DirectX::DirectXPixelFormat,
     Win32::Graphics::Direct3D11::{
         D3D11CreateDevice,
         D3D11_SDK_VERSION,
@@ -27,7 +25,7 @@ unsafe extern "system" fn enum_proc(hwnd: HWND, _l_param: LPARAM) -> BOOL {
         println!("{}", win_text);
         let item = GraphicsCaptureItem::TryCreateFromWindowId(GetWindowLongA(hwnd, GWL_ID))?;
         let d = create_d3d_device()?;
-        let p:Direct3D11CaptureFramePool = Direct3D11CaptureFramePool::Create(d,B8G8R8X8UIntNormalized,1,item.Size);
+        let p:Direct3D11CaptureFramePool = Direct3D11CaptureFramePool::Create(d,DirectXPixelFormat::B8G8R8X8UIntNormalized,1,item.Size);
         // p.
     }
     BOOL(1)
