@@ -1,8 +1,10 @@
 use windows::{
     Win32::Foundation::*,
+    core::Result,
     core::*, Data::Xml::Dom::*, Win32::System::Threading::*,
     Graphics::Capture::*,
     Win32::UI::WindowsAndMessaging::*,
+    UI::WindowId,
     Graphics::Capture::*,
     Win32::Graphics::Direct3D::{
         D3D_DRIVER_TYPE_HARDWARE, D3D_DRIVER_TYPE,
@@ -16,7 +18,6 @@ use windows::{
 };
 
 use std::char::{decode_utf16, REPLACEMENT_CHARACTER};
-use windows::UI::WindowId;
 
 unsafe extern "system" fn enum_proc(hwnd: HWND, _l_param: LPARAM) -> BOOL {
     let mut buf = [0u16; 1024];
@@ -43,7 +44,7 @@ fn decode(source: &[u16]) -> String {
     decode_utf16(source.iter().take_while(|&i| *i != 0).cloned()).map(|r| r.unwrap_or(REPLACEMENT_CHARACTER)).collect()
 }
 
-pub fn create_d3d_device() -> windows::Result<ID3D11Device> {
+pub fn create_d3d_device() -> Result<ID3D11Device> {
     let mut device = None;
     let mut result = create_d3d_device_with_type(
         D3D_DRIVER_TYPE_HARDWARE,
@@ -70,7 +71,7 @@ fn create_d3d_device_with_type(
     driver_type: D3D_DRIVER_TYPE,
     flags: D3D11_CREATE_DEVICE_FLAG,
     device: *mut Option<ID3D11Device>,
-) -> windows::Result<()> {
+) -> Result<()> {
     unsafe {
         D3D11CreateDevice(
             None,
